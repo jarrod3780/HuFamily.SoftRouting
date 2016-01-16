@@ -35,18 +35,26 @@ namespace HuFamily.Main
             setting.Password = password;
             setting.Enable = enable;
             setting.AutoStart = autostart;
+            Directory.CreateDirectory(Environment.CurrentDirectory + @"\settings");
 
-            using (StreamWriter writer = new StreamWriter(Environment.CurrentDirectory + @"\hufamily.wireless.conf"))
+            using (StreamWriter writer = new StreamWriter(Environment.CurrentDirectory + @"\settings\hufamily.wireless.conf"))
             using (JsonWriter jsonWriter = new JsonTextWriter(writer))
             {
                 jsonSerializer.Serialize(jsonWriter, setting);
+                writer.Dispose();
             }
         }
 
         public static string[] ReadSetting()
         {
-            string[] setting = { string.Empty };
-
+            string[] settingSend = new string[10];
+            string jsonContent = File.ReadAllText(Environment.CurrentDirectory + @"\settings\hufamily.wireless.conf");
+            Setting setting = JsonConvert.DeserializeObject<Setting>(jsonContent);
+            settingSend[0] = setting.SSID;
+            settingSend[1] = setting.Password;
+            settingSend[2] = setting.Enable.ToString();
+            settingSend[3] = setting.AutoStart.ToString();
+            return settingSend;
         }
     }
 }
