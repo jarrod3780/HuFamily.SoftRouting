@@ -24,6 +24,7 @@ namespace HuFamily.Wireless
             {
                 debugBox.AppendText(Environment.NewLine + HostedNetwork.SetHostedNetwork(ssidTextbox.Text, passwdTextbox.Text));
                 debugBox.AppendText(Environment.NewLine + HostedNetwork.SetStatus(enableCheckbox.Checked));
+                LocalSetting.WriteSetting(ssidTextbox.Text, passwdTextbox.Text, enableCheckbox.Checked, autoStartCheckbox.Checked);
                 MessageBox.Show("设置信息已写入，请检查右边的调试信息是否正确！", "设置成功", MessageBoxButtons.OK);
             }
             else

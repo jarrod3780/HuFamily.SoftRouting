@@ -320,7 +320,7 @@
             // readButton
             // 
             this.readButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.readButton.Location = new System.Drawing.Point(275, 751);
+            this.readButton.Location = new System.Drawing.Point(33, 751);
             this.readButton.Name = "readButton";
             this.readButton.Size = new System.Drawing.Size(220, 83);
             this.readButton.TabIndex = 1;
@@ -331,7 +331,7 @@
             // setButton
             // 
             this.setButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setButton.Location = new System.Drawing.Point(32, 751);
+            this.setButton.Location = new System.Drawing.Point(274, 751);
             this.setButton.Name = "setButton";
             this.setButton.Size = new System.Drawing.Size(220, 83);
             this.setButton.TabIndex = 0;

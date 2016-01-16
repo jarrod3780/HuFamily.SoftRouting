@@ -48,7 +48,7 @@ namespace HuFamily.Main
 
             string optResult = RunNetsh("wlan show hostednetwork");
             string[] status = optResult.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lineResult = { string.Empty }, finalResult = new string[1000];
+            string[] lineResult = { string.Empty }, finalResult = new string[120];
 
             for (int i = 0; i < status.Length; i++)
             {
