@@ -359,6 +359,7 @@
             this.Controls.Add(this.settingGroup);
             this.Name = "mainForm";
             this.Text = "HuFamily.Wireless Configurator - NETSH Frontend";
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.settingGroup.ResumeLayout(false);
             this.settingGroup.PerformLayout();
             this.groupBox1.ResumeLayout(false);
