@@ -54,53 +54,53 @@ namespace HuFamily.Main
             {
                 string lineStr = status[i];
 
-                if (lineStr.Contains("Mode"))
+                if (lineStr.Contains("Mode") || lineStr.Contains("模式"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[0] = lineResult[1];
                 }
-                else if (lineStr.Contains("SSID name"))
+                else if (lineStr.Contains("SSID name") || lineStr.Contains("SSID 名称"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     lineResult[1].Replace("\"", ""); // Remove quotation mark
                     finalResult[1] = lineResult[1];
                 }
-                else if (lineStr.Contains("Max number of clients"))
+                else if (lineStr.Contains("Max number of clients") || lineStr.Contains("最多客户端数"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[2] = lineResult[1];
                 }
-                else if (lineStr.Contains("Authentication"))
+                else if (lineStr.Contains("Authentication") || lineStr.Contains("身份验证"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[3] = lineResult[1];
                 }
-                else if (lineStr.Contains("Cipher"))
+                else if (lineStr.Contains("Cipher") || lineStr.Contains("密码"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[4] = lineResult[1];
                 }
-                else if (lineStr.Contains(@"Status                 :"))
+                else if (lineStr.Contains(@"Status                 :") || lineStr.Contains(@"状态      "))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[5] = lineResult[1];
                 }
-                else if (lineStr.Contains("BSSID"))
+                else if (lineStr.Contains("BSSID")) // “BSSID” section has the same value, both in Chinese and English OS
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[6] = lineResult[1];
                 }
-                else if (lineStr.Contains("Radio type"))
+                else if (lineStr.Contains("Radio type") || lineStr.Contains("无线电类型"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[7] = lineResult[1];
                 }
-                else if (lineStr.Contains("Channel"))
+                else if (lineStr.Contains("Channel") || lineStr.Contains("频道"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[8] = lineResult[1];
                 }
-                else if (lineStr.Contains("Number of clients "))
+                else if (lineStr.Contains("Number of clients ") || lineStr.Contains("客户端数"))
                 {
                     lineResult = lineStr.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     finalResult[9] = lineResult[1];

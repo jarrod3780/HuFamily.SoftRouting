@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HuFamily.Main;
+using Microsoft.Win32;
 
 namespace HuFamily.Wireless
 {
@@ -63,16 +64,34 @@ namespace HuFamily.Wireless
 
             if(CtrlVar.autoStart)
             {
-                autoStart();
+                addAutoStart();
+            }
+            else
+            {
+
             }
         }
 
-        private void autoStart()
+        private void addAutoStart()
         {
             debugBox.AppendText("**************\r\n自动启动即将生效，5秒后将应用相关设置\r\n**************");
             Thread.Sleep(5000);
+            RegistryKey registerAutoStart = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            registerAutoStart.SetValue("HuFamilyWifi", Application.ExecutablePath);
+
             debugBox.AppendText(Environment.NewLine + HostedNetwork.SetHostedNetwork(ssidTextbox.Text, passwdTextbox.Text));
             debugBox.AppendText(Environment.NewLine + HostedNetwork.SetStatus(enableCheckbox.Checked));
         }
+
+        private void remoteAutoStart()
+        {
+            debugBox.AppendText("**************\r\n自动启动即将生效\r\n***********************");
+            RegistryKey registerAutoStart = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            registerAutoStart.DeleteValue("HuFamilyWifi");
+
+            debugBox.AppendText(Environment.NewLine + HostedNetwork.SetHostedNetwork(ssidTextbox.Text, passwdTextbox.Text));
+            debugBox.AppendText(Environment.NewLine + HostedNetwork.SetStatus(enableCheckbox.Checked));
+        }
+
     }
 }
